@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import SolarMonitorHeader from "./SolarMonitorHeader";
-import EnergySection from "./EnergySection";
-import AmountCard from "./AmountCard";
+import SolarMonitorHeader from "./components/SolarMonitorHeader";
+import EnergySection from "./components/EnergySection";
+import AmountCard from "./components/AmountCard";
 
 const SolarMonitor = () => {
   return (

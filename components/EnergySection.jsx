@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { EnergyIcon, TemperatureIcon, HumidityIcon } from "./CustomIcons";
+import { EnergyIcon, TemperatureIcon, HumidityIcon } from "./icon/CustomIcons";
 import MetricDisplay from "./MetricDisplay";
 
 const EnergySection = () => {

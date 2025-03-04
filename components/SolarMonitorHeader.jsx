@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { CalendarIcon, ClockIcon } from "./CustomIcons";
+import { CalendarIcon, ClockIcon } from "./icon/CustomIcons";
 
 const SolarMonitorHeader = () => {
   return (
