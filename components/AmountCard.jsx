@@ -1,6 +1,6 @@
 import * as React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import WalletIcon from "./WalletIcon";
+import WalletIcon from "./icon/WalletIcon";
 
 const AmountCard = () => {
   return (
