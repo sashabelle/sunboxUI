@@ -6,26 +6,25 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from "react-native";
-import { COLORS, FONTS, SIZES } from "./commonStyles";
+import { colors, fonts } from "./styles";
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const [adminName, setAdminName] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputGroup}>
+    <>
+      <View style={styles.formGroup}>
         <Text style={styles.label}>Admin Name</Text>
         <TextInput
           style={styles.input}
           value={adminName}
           onChangeText={setAdminName}
           placeholder="Enter admin name"
-          placeholderTextColor={COLORS.primary}
+          placeholderTextColor={colors.primary}
         />
       </View>
-
-      <View style={styles.inputGroup}>
+      <View style={styles.formGroup}>
         <Text style={styles.label}>Password</Text>
         <TextInput
           style={styles.input}
@@ -33,56 +32,51 @@ const LoginForm = () => {
           onChangeText={setPassword}
           secureTextEntry
           placeholder="Enter password"
-          placeholderTextColor={COLORS.primary}
+          placeholderTextColor={colors.primary}
         />
       </View>
-
       <TouchableOpacity style={styles.button} onPress={() => {}}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-    </View>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-  },
-  inputGroup: {
+  formGroup: {
     width: "100%",
     marginBottom: 28,
   },
   label: {
-    color: COLORS.primary,
-    fontFamily: FONTS.medium,
-    fontSize: SIZES.medium,
+    color: colors.primary,
+    fontFamily: fonts.medium,
+    fontSize: 14,
+    fontWeight: "500",
     marginBottom: 8,
   },
   input: {
     width: "100%",
     height: 32,
     borderWidth: 1,
-    borderColor: COLORS.primary,
+    borderColor: colors.primary,
     borderRadius: 9,
     paddingHorizontal: 10,
-    color: COLORS.primary,
-    fontFamily: FONTS.regular,
+    color: colors.primary,
+    fontFamily: fonts.regular,
   },
   button: {
     width: 122,
     height: 36,
-    backgroundColor: COLORS.accent,
+    backgroundColor: colors.accent,
     borderRadius: 15,
     justifyContent: "center",
     alignItems: "center",
-    alignSelf: "center",
     marginBottom: 30,
   },
   buttonText: {
-    color: COLORS.dark,
-    fontFamily: FONTS.medium,
-    fontSize: SIZES.large,
+    color: colors.dark,
+    fontFamily: fonts.medium,
+    fontSize: 16,
+    fontWeight: "500",
   },
 });
-
-export default LoginForm;
