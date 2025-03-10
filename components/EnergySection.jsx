@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { EnergyIcon, TemperatureIcon, HumidityIcon } from "./icon/CustomIcons";
 import MetricDisplay from "./MetricDisplay";
+import { getDatabase, ref, onValue, query, limitToLast } from "firebase/database";
+import { firebaseApp } from "./firebase-config";
 
 const EnergySection = () => {
+  const [temperature, setTemperature] = useState("--");
+  const [humidity, setHumidity] = useState("--");
+
+  useEffect(() => {
+    const db = getDatabase(firebaseApp);
+
+    // Get today's date (YYYY-MM-DD format)
+    const today = new Date().toISOString().split("T")[0]; // "2025-03-06"
+
+    // Reference to today's data in Firebase    
+    const dataRef = query(ref(db, `DHT22data/${today}`), limitToLast(1));
+
+    onValue(dataRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const data = Object.values(snapshot.val())[0]; // Get latest entry
+        console.log("Firebase Data:", data); // Debugging
+        setTemperature(data.temperature ? `${data.temperature} °C` : "--");
+        setHumidity(data.humidity ? `${data.humidity}%` : "--");
+      } else {
+        console.log("No data found in Firebase!");
+      }
+    });
+  }, []);
+
   return (
     <View style={styles.container}>
       <View style={styles.energyDisplay}>
@@ -12,16 +38,8 @@ const EnergySection = () => {
         <Text style={styles.energyLabel}>Total Energy Collected</Text>
       </View>
       <View style={styles.metrics}>
-        <MetricDisplay
-          label="Current Temperature"
-          value="36.9 ° C"
-          icon={<TemperatureIcon />}
-        />
-        <MetricDisplay
-          label="Current Humidity"
-          value="100%"
-          icon={<HumidityIcon />}
-        />
+        <MetricDisplay label="Current Temperature" value={temperature} icon={<TemperatureIcon />} />
+        <MetricDisplay label="Current Humidity" value={humidity} icon={<HumidityIcon />} />
       </View>
     </View>
   );

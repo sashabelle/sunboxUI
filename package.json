@@ -10,15 +10,18 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-native-firebase/app": "^21.12.0",
     "expo": "~52.0.37",
     "expo-status-bar": "~2.0.1",
+    "firebase": "^11.4.0",
     "react": "18.3.1",
     "react-native": "0.76.7",
     "react-native-linear-gradient": "^2.8.3",
     "react-native-svg": "^15.11.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.0"
+    "@babel/core": "^7.20.0",
+    "@react-native-community/cli": "^17.0.0"
   },
   "private": true
 }

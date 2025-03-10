@@ -4,6 +4,8 @@ import { View, StyleSheet } from "react-native";
 import SolarMonitorHeader from "./components/SolarMonitorHeader";
 import EnergySection from "./components/EnergySection";
 import AmountCard from "./components/AmountCard";
+import firebaseApp from "./components/firebase-config";
+
 
 const SolarMonitor = () => {
   return (

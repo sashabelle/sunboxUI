@@ -1,19 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { CalendarIcon, ClockIcon } from "./icon/CustomIcons";
 
 const SolarMonitorHeader = () => {
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const updateDateTime = () => {
+      const now = new Date();
+
+      const formattedDate = now.toISOString().split("T")[0]; // YYYY-MM-DD
+      const formattedTime = now.toLocaleTimeString("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      }); // HH:MM:SS format
+
+      setDate(formattedDate);
+      setTime(formattedTime);
+    };
+
+    updateDateTime(); // Initial call
+    const interval = setInterval(updateDateTime, 1000); // Update every second
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
+
   return (
     <View style={styles.header}>
       <Text style={styles.title}>Solar Energy Monitor</Text>
       <View style={styles.datetime}>
         <View style={styles.dateGroup}>
           <CalendarIcon />
-          <Text style={styles.dateTime}>2025-02-19</Text>
+          <Text style={styles.dateTime}>{date}</Text>
         </View>
         <View style={styles.timeGroup}>
           <ClockIcon />
-          <Text style={styles.dateTime}>22 : 09 : 00</Text>
+          <Text style={styles.dateTime}>{time}</Text>
         </View>
       </View>
     </View>
@@ -22,7 +46,6 @@ const SolarMonitorHeader = () => {
 
 const styles = StyleSheet.create({
   header: {
-    display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
@@ -34,19 +57,16 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   datetime: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     gap: 8,
   },
   dateGroup: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
   },
   timeGroup: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     gap: 6,
