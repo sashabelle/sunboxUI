@@ -1,12 +1,16 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { COLORS, FONTS, SIZES } from "./commonStyles";
+import { colors, fonts } from "./styles";
 
-const HeaderSection = () => {
+export const HeaderSection = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.welcomeText}>Welcome to</Text>
-      <Text style={styles.titleText}>Sunbox</Text>
+      <View style={styles.welcomeContainer}>
+        <Text style={styles.welcomeText}>Welcome to</Text>
+      </View>
+      <View style={styles.titleContainer}>
+        <Text style={styles.titleText}>Sunbox</Text>
+      </View>
     </View>
   );
 };
@@ -16,17 +20,20 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 20,
   },
-  welcomeText: {
-    color: COLORS.primary,
-    fontFamily: FONTS.semiBold,
-    fontSize: SIZES.small,
+  welcomeContainer: {
     marginBottom: 5,
   },
+  welcomeText: {
+    color: colors.primary,
+    fontFamily: fonts.semiBold,
+    fontSize: 13,
+    fontWeight: "600",
+  },
+  titleContainer: {},
   titleText: {
-    color: COLORS.primary,
-    fontFamily: FONTS.semiBold,
-    fontSize: SIZES.xlarge,
+    color: colors.primary,
+    fontFamily: fonts.semiBold,
+    fontSize: 31,
+    fontWeight: "600",
   },
 });
-
-export default HeaderSection;
