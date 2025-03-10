@@ -1,27 +1,20 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Linking,
-} from "react-native";
-import { COLORS, FONTS, SIZES } from "./commonStyles";
+import { View, Text, StyleSheet, Linking } from "react-native";
+import { colors, fonts } from "./styles";
 
-const ContactNote = () => {
+export const ContactNote = () => {
   const handleEmailPress = () => {
     Linking.openURL("mailto:sunbox041990@gmail.com");
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.divider} />
       <Text style={styles.text}>
         To create an account, please contact the administrators at
       </Text>
-      <TouchableOpacity onPress={handleEmailPress}>
-        <Text style={styles.email}>sunbox041990@gmail.com</Text>
-      </TouchableOpacity>
+      <Text style={styles.email} onPress={handleEmailPress}>
+        sunbox041990@gmail.com
+      </Text>
     </View>
   );
 };
@@ -30,25 +23,18 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
   },
-  divider: {
-    width: 236,
-    height: 1,
-    backgroundColor: COLORS.primary,
-    marginBottom: 16,
-  },
   text: {
-    color: COLORS.primary,
-    fontFamily: FONTS.regular,
-    fontSize: SIZES.small,
+    color: colors.primary,
+    fontFamily: fonts.regular,
+    fontSize: 12,
     textAlign: "center",
     lineHeight: 19,
   },
   email: {
-    color: COLORS.accent,
-    fontFamily: FONTS.regular,
-    fontSize: SIZES.small,
+    color: colors.accent,
+    fontFamily: fonts.regular,
+    fontSize: 12,
     marginTop: 4,
+    textDecorationLine: "underline",
   },
 });
-
-export default ContactNote;
