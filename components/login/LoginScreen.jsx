@@ -1,13 +1,14 @@
 import React from "react";
-import { View, Image, StyleSheet, SafeAreaView } from "react-native";
-import HeaderSection from "./HeaderSection";
-import LoginForm from "./LoginForm";
-import ContactNote from "./ContactNote";
-import { COLORS } from "./commonStyles";
+import { View, Image, StyleSheet } from "react-native";
+import { HeaderSection } from "./HeaderSection";
+import { LoginForm } from "./LoginForm";
+import { Divider } from "./Divider";
+import { ContactNote } from "./ContactNote";
+import { colors } from "./styles";
 
 const LoginScreen = () => {
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <View style={styles.card}>
         <HeaderSection />
         <Image
@@ -18,16 +19,17 @@ const LoginScreen = () => {
           resizeMode="contain"
         />
         <LoginForm />
+        <Divider />
         <ContactNote />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    width: "100%",
     flex: 1,
-    backgroundColor: COLORS.white,
     justifyContent: "center",
     alignItems: "center",
     padding: 20,
@@ -35,9 +37,9 @@ const styles = StyleSheet.create({
   card: {
     width: 347,
     borderRadius: 40,
-    backgroundColor: COLORS.white,
-    paddingHorizontal: 30,
+    backgroundColor: "white",
     paddingVertical: 40,
+    paddingHorizontal: 30,
     alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
