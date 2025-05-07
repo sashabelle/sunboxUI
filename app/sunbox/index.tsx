@@ -1,9 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import SolarMonitorHeader from "./SolarMonitorHeader";
-import EnergySection from "./EnergySection";
-import AmountCard from "./AmountCard";
+import SolarMonitorHeader from "../../components/SolarMonitorHeader";
+import EnergySection from "../../components/EnergySection";
+import AmountCard from "../../components/AmountCard";
 
 const SolarMonitor = () => {
   return (
@@ -28,17 +28,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#212124",
   },
   card: {
-    width: 520,
-    height: 202,
+    width: "90%", // Make it responsive instead of fixed width
+    maxWidth: 520, // Set maximum width
+    minHeight: 220, // Slightly increased height
     borderRadius: 19,
     padding: 22,
-    paddingHorizontal: 90,
+    paddingHorizontal: 30, // Reduced horizontal padding
     backgroundColor: "#212124",
   },
   content: {
     alignItems: "center",
     display: "flex",
-    gap: 13,
+    gap: 16, // Slightly increased gap
   },
 });
 
